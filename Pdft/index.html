@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="dftCalculatorStyle.css">
+    </head>
+    <body>
+        <h1 class = "page_title">P-DFT Calculator</h1>
+        <h2 class = "link_back">Created by <a href="../TemplateFirst.html">Matt Chiu</a></h2>
+        <p class = "opening"> This is a user-friendly web app for calculating the P-DFT: a DFT in pitch/midi space (see below). To use the app, enter either pitch names (e.g. "C4, G7, E5") and/or midi numbers
+            separated by commas and then hit "calculate." Components represent equal divisions of midi space—a higher magnitude for a component means the signal is well divided into <em>n</em>-parts (where <em>n</em> is the component number).
+        </p>
+
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+        <script src = "./scripts/setupFunctions.js"></script>
+        
+        <div>
+            <canvas id="myChart" width="40px" height="20px" style="border: 2px solid;"></canvas>
+        </div> 
+        
+        <script>
+            function range(start, end) {
+                var ans = [];
+                for (let i = start; i <= end; i++) {
+                ans.push(i);
+                }
+                return ans;
+                }
+            // console.log(range(0,126))
+
+            let startUp = new Array(127).fill(.5);
+            let myChart = document.getElementById("myChart").getContext("2d");
+            let myLineChart = new Chart(myChart, {
+                type: "line",
+                data: {
+                    labels: range(0, 126),
+                    datasets: [{
+                        strokeColor: "rgba(220,220,220,0.8)",
+                        // strokeColor: "#FF0A0E",
+                        label: "DFT Magnitudes",
+                        data: startUp,
+                        // borderColor: "#f0c1b3",
+                        pointBackgroundColor: "#FF0A0E",
+                        pointBorderColor: "#392303",
+                        borderColor: "#392303",
+                        backgroundColor: "rgba(158, 158, 158, .3)",
+                        defaultFontFamily: "Alegreya",
+                    }]
+                },
+                options: {
+                    legend: {
+                        display: false
+
+                    },
+                    scales: {
+                        yAxes: [{
+                            scaleLabel: {
+                                fontFamily: "Alegreya",
+                                fontSize: 20,
+                                display: true,
+                                labelString: 'magnitude'
+                            },
+                            ticks: {
+                                suggestedMin: 0,
+                                beginAtZero: true,
+                                suggestedMax: 1,
+                                fontSize: 15,
+                                fontFamily: "Alegreya",
+                            }
+                        }],
+                        xAxes: [{
+                            scaleLabel: {
+                                fontFamily: "Alegreya",
+                                fontSize: 20,
+                                display: true,
+                                labelString: 'component number'
+                            },
+                            labelString: "Magnitude",
+                            ticks: {
+                                fontSize: 15,
+                                fontFamily: "Alegreya", 
+                            }
+                        }]
+                    }
+
+                }
+                })
+        </script>
+        <input class = "input_box" type = "text" name = "inputPitches" id = "pitch_input" size = "50">
+        
+        <button onclick= "updateDFTChartAfterInitialized(myLineChart)";>Calculate</button>
+
+        <p class = "closing"> For more details on the P-DFT, see <a href = "https://www.youtube.com/watch?v=aP96c6oTkmQ">this presentation</a> by Kahrs and Chiu—publication forthcoming in <a href = "http://org.osu.edu/mascats/">Future Directions of Music Cognition</a>. 
+            The magnitudes in the graph above are normalized by the cardinality <em>f<sub>0</sub></em>.
+            For examining DFT components separated in a vector space, see Jenn Harding's implementation <a href = "http://www.jenndharding.com/vectorcalculator.html">here</a>.
+        </p>
+
+    </body>
+
+</html>
