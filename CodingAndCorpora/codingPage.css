@@ -1,0 +1,46 @@
+
+
+.section_title {
+    margin-top: 0;
+    margin-left: 10px;
+    margin-bottom: 0px;
+    /* padding: 10px; */
+}
+
+.app {
+    font-size: 20px;
+    border: 1px solid;
+    background-color: rgba(145, 125, 125, 0.3);
+}
+.flavor_text {
+    font-size: 20px;
+    margin-left: 10px;
+    font-style: italic;
+}
+
+
+.web_app {
+    clear: both;
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 15px;
+    padding: 4px;
+    border: 1px solid;
+    /* border-left: 200px; */
+    border-left-width: 4px;
+    border-left-color: darkgray;
+    background-color: rgba(125, 125, 125, 0.3);
+}
+
+.corpora {
+    clear: both;
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 15px;
+    padding: 4px;
+    border: 1px solid;
+    /* border-left: 200px; */
+    border-left-width: 4px;
+    border-left-color: darkgray;
+    background-color: rgba(125, 125, 125, 0.3);
+}
