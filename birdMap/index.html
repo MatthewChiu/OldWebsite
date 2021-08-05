@@ -5,8 +5,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="birdMapStyle.css">
+
+    <!-- Below is the link for leaflet JS library-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
 </head>
 <body>
+    <h1>Chiu's Bird Map</h1>
+    <p> 
+        In addition to a tallying birds for my "life list," I want to photograph them too! I've made
+        an interactive map in javascript to link to birds I've seen.
+    </p>
+
+    <div id = "map">
+        <script src = "./scripts/mapSetup.js"></script>
+    </div>
+
+    <!-- <script>
+        var map = L.map('map').setView([43.26120612479979, -73.037109375],3);
+        L.tileLayer("https://api.maptiler.com/maps/basic/256/{z}/{x}/{y}.png?key=oO92R6JLSUVX72geBwkf", {
+            attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
+        }).addTo(map);
+    </script> -->
+
+    
+    
+
+    
     
 </body>
 </html>
