@@ -38,3 +38,33 @@ luxembourg_2021.bindPopup("<a href='https://drive.google.com/drive/folders/1TDug
 –Eurasian Blackbird<br>\
 –The Ever Majestic Rock Dove<br>")
 
+var metz_2021 = L.marker([49.12167206308836, 6.165851634683215], {icon: birdIcon}).addTo(map);
+metz_2021.bindPopup("<a href='https://drive.google.com/drive/folders/1njlG6_lmbb1kth9gid3NOi0f08WUMZoK?usp=sharing'>Metz: 7.1.21</a><br>\
+–Eurasian Jackdaw<br>\
+–Eurasian Moorhen<br>\
+–White Wagtail<br>")
+
+var bois_de_boulogne_2021 = L.marker([48.862326382948325, 2.2490010839792314], {icon: birdIcon}).addTo(map);
+bois_de_boulogne_2021.bindPopup("<a href='https://drive.google.com/drive/folders/1m3mBuWg6trD1LJWD80-j5udqity3KEuh?usp=sharing'>Bois de Boulogne: 6.27.21</a><br>\
+–Eurasian Jays<br>\
+–Eurasian Robin<br>\
+–Gray Heron (Eating!)<br>")
+
+var paris_2021 = L.marker([48.85786330891968, 2.3461146023504362], {icon: birdIcon}).addTo(map);
+paris_2021.bindPopup("<a href='https://drive.google.com/drive/folders/1DPJd-cV1Arv5nbglfZnFuhTLaWyJJmeO?usp=sharing'>Paris: 6.24.21</a><br>\
+–Magpie<br>\
+–Rose-Ringed Parakeet<br>")
+
+var eastHampton_2021 = L.marker([41.578519579645516, -72.49217008429353], {icon: birdIcon}).addTo(map);
+eastHampton_2021.bindPopup("<a href='https://drive.google.com/drive/folders/1EGC_THitiy0gz8K7djy7gcl4AQEU2uTP?usp=sharing'>East Hampton: 6.18.21</a><br>\
+–Eastern Phoebe<br>\
+–Eastern Wood-Pewee<br>\
+–Red-Shouldered Hawk<br>\
+–House Finch<br>")
+
+var mendonPonds_fairy_birdsong_2021 = L.marker([43.02308300681513, -77.58311011127753], {icon: birdIcon}).addTo(map);
+mendonPonds_fairy_birdsong_2021.bindPopup("https://drive.google.com/drive/folders/1HDp_eh4e87LLkSChz00K4-AjLV4XaVn6?usp=sharing'>Mendon Ponds, Fairy Birdsong: 6.16.21</a><br>\
+–American Goldfinch<br>\
+–Eastern Bluebird<br>\
+–Indigo Bunting<br>\
+–Red-Bellied Woodpecker<br>")
