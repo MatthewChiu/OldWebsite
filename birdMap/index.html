@@ -11,12 +11,15 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
 </head>
-<body>
-    <h1 id = "chiuTitle">Chiu's Bird Map</h1>
+<body>  
     <div id = "pageContent">
+
+        <h1 id = "chiuTitle"><a href = "https://mattchiu.com">Chiu</a>: Bird Map</h1>
         <p id = "birdingSummary"> 
-            In addition to a tallying birds for my "life list," I want to photograph them too! I've made
-            an interactive map in javascript to link to birds I've seen.
+            Birding and music theory aren't that different: they both involve a lot of 
+            observation and organization. This page logs a subset of my birding lifelist— 
+            tallying solely birds I've photographed. Additionally, I created an interactive map with
+            the birding area and the accompanying bird photos.
         </p>
 
         <div class="birdInfoRow">
@@ -30,28 +33,69 @@
                             <li>European Starling</li>
                             <li>House Sparrow</li>
                             <li>Northern Cardinal</li>
-                            <li>B</li>
-                            <li>C</li>
-                            <li>A</li>
-                            <li>B</li>
-                            <li>C</li>
-                            <li>A</li>
-                            <li>B</li>
-                            <li>C</li>
-                            <li>A</li>
-                            <li>B</li>
-                            <li>C</li>
-                            <li>B</li>
-                            <li>C</li>
-                            <li>A</li>
-                            <li>B</li>
-                            <li>C</li>
-                            <li>A</li>
-                            <li>B</li>
-                            <li>C</li>
-                            <li>A</li>
-                            <li>B</li>
-                            <li>C</li>
+                            <li>Mallard</li>
+                            <li>Red-Winged Blackbird</li>
+                            <li>Cedar Waxwing</li>
+                            <li>Eastern Bluebird</li>
+                            <li>Great Blue Heron</li>
+                            <li>Northern Waterthrush</li>
+                            <li>Osprey</li>
+                            <li>American Coot</li>
+                            <li>Barn Swallow</li>
+                            <li>Black-Capped Chickadee</li>
+                            <li>Mute Swan</li>
+                            <li>American Crow</li>
+                            <li>American Goldfinch</li>
+                            <li>Indigo Bunting</li>
+                            <li>Red-Bellied Woodpecker</li>
+                            <li>White-Breasted Nuthatch</li>
+                            <li>Eastern Phoebe</li>
+                            <li>Eastern Wood-Pewee</li>
+                            <li>House Finch</li>
+                            <li>House Wren</li>
+                            <li>Red-Shouldered Hawk</li>
+                            <li>Common Wood Pigeon</li>
+                            <li>Eurasian Blackbird</li>
+                            <li>Magpie</li>
+                            <li>Rose-Ringed Parakeet</li>
+                            <li>Eurasian Jay</li>
+                            <li>European Robin</li>
+                            <li>Gray Heron</li>
+                            <li>Black Redstart</li>
+                            <li>Black-Headed Gull</li>
+                            <li>Common Chaffinch</li>
+                            <li>Egyptian Goose</li>
+                            <li>Eurasian Blue Tit</li>
+                            <li>Eurasian Jackdaw</li>
+                            <li>Eurasian Moorhen</li>
+                            <li>Eurasian Nuthatch</li>
+                            <li>Great Cormorant</li>
+                            <li>White Wagtail</li>
+                            <li>Rock Dove</li>
+
+                            <li>Carolina Wren</li>
+                            <li>Cowbird</li>
+                            <li>Green Heron</li>
+                            <li>Hairy Woodpecker</li>
+                            <li>Louisiana Waterthrush</li>
+                            <li>Mourning Dove</li>
+                            <li>Northern Mockingbird</li>
+                            <li>Northern Parula</li>
+                            <li>Scarlet Tanager</li>
+
+                            <li>Anhinga</li>
+                            <li>Boat-Tailed Grackle</li>
+                            <li>Limpkin</li>
+                            <li>Little Blue Heron</li>
+                            <li>White Ibis</li>
+
+                            <li>Caspian Tern</li>
+                            <li>Eastern Kingbird</li>
+                            <li>Gray Catbird</li>
+                            <li>Great Egret</li>
+
+                            <li>Blue Jay</li>
+                            <li>Swamp Sparrow</li>
                         </ol>
                     </div>
                 </p>
@@ -62,17 +106,19 @@
             </div>
         </div>
 
+        <div id = "additionalPhotos">
+            <!-- <img src = "https://drive.google.com/uc?export=view&id=132L5vhVURBPM3Nby1TVxwIlxWzfff0TT" width = "20%" height="20%"> -->
+            <!-- <img src = "https://drive.google.com/uc?export=view&id=1N40qZQzDb2PPGIbNmFnNid1H5MKmcbb6" width = "20%" height="20%"> -->
+            <img src = "images/osprey.black_creek.JPG" width = "19%">
+            <img src = "images/cedar_waxwing.irondequoit_bay.JPG" width = "19%">
+            <img src = "images/eurasian_jay.boisDeBoulogne.JPG" width = "19%">
+            <img src = "images/red_bellied_woodpecker.maryville.JPG" width = "19%">
+            <img src = "images/limpkin2.orlando.JPG" width = "19%">
+        </div>
+
+
     </div>
 
-    <!-- <script>
-        var map = L.map('map').setView([43.26120612479979, -73.037109375],3);
-        L.tileLayer("https://api.maptiler.com/maps/basic/256/{z}/{x}/{y}.png?key=oO92R6JLSUVX72geBwkf", {
-            attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
-        }).addTo(map);
-    </script> -->
-
-    
-    
 
     
     

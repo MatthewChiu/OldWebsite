@@ -106,11 +106,11 @@ irondequoit_bay8_2021.bindPopup("<a href='https://drive.google.com/drive/folders
 –Blue Jay<br>\
 –Cedar Waxwing<br>")
 
-var lucien_morin_2021 = L.marker([43.18577728031273, -77.52938320653942], {icon: birdIcon}).addTo(map);
+var lucien_morin_2021 = L.marker([43.1748819291456, -77.52420540056869], {icon: birdIcon}).addTo(map);
 lucien_morin_2021.bindPopup("<a href='https://drive.google.com/drive/folders/19QpkQb29yoq9abWAjIJM0jyQodJQbmA6?usp=sharing' target='_blank'>Lucien Morin: 8.4.21</a><br>\
 –Swamp Sparrow<br>")
 
-var mendon_ponds_100_pond_2021 = L.marker(43.029412663961764, -77.563435355396, {icon: birdIcon}).addTo(map);
-mendon_ponds_100_pond_2021.bindPopup("<a href='https://drive.google.com/drive/folders/1WANamqw3n-U7EnYB65ksySY2sn7whJRA?usp=sharing' target='_blank'>Mendon Ponds, 100-Acre Pond: 8.5.21</a><br>\
+var mendon_ponds_100_pond_2021 = L.marker([43.02909911577686, -77.56910025788241], {icon: birdIcon}).addTo(map);
+mendon_ponds_100_pond_2021.bindPopup("<a href='https://drive.google.com/drive/folders/1WANamqw3n-U7EnYB65ksySY2sn7whJRA?usp=sharing' target='_blank'>Lucien Morin: 8.4.21</a><br>\
 –Cedar Waxwing<br>")
 
