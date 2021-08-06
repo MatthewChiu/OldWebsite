@@ -7,8 +7,8 @@ L.tileLayer("https://api.maptiler.com/maps/basic/256/{z}/{x}/{y}.png?key=oO92R6J
 
 var birdIcon = L.icon({
     iconUrl: './images/birdIcon.png',
-    iconSize:     [25, 25], // size of the icon
-    iconAnchor:   [12.5, 12.5], // point of the icon which will correspond to marker's location
+    iconSize:     [30, 30], // size of the icon
+    iconAnchor:   [15, 15], // point of the icon which will correspond to marker's location
     popupAnchor:  [0, -5] // point from which the popup should open relative to the iconAnchor
 });
 

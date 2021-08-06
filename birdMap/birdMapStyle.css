@@ -1,10 +1,54 @@
+body {
+    font-family: alegreya;
+    background-color: black;
+    color: white;
+}
 
+#chiuTitle {
+    margin-bottom: 0;
+}
+
+#birdSummary {
+    padding-top: 0;
+}
+
+.birdColumn1 {
+    float: left;
+    width: 19%;
+    height: 500px;
+}
+.birdColumn2 {
+    float: right;
+    width: 79%;
+}
+
+#lifeList {
+    text-align: center;
+    font-size: 25px;
+    border-style:inset;
+}
+
+#lifeListTitle {
+    margin-top: 0px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+ul, li {
+    margin-top: 0;
+    padding-top: 0;
+    padding:0;
+    margin:0;
+}
+.listWrapper {
+    max-height:460px;
+    overflow-y:auto;
+    font-size: 20px;
+}
 
 #map {height: 500px;
     font-family: alegreya;
     font-size:medium;
+    border-style: solid;
 }
 
-.popupClass{
-	text-align:center;
-}
