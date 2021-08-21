@@ -110,7 +110,27 @@ var lucien_morin_2021 = L.marker([43.1748819291456, -77.52420540056869], {icon: 
 lucien_morin_2021.bindPopup("<a href='https://drive.google.com/drive/folders/19QpkQb29yoq9abWAjIJM0jyQodJQbmA6?usp=sharing' target='_blank'>Lucien Morin: 8.4.21</a><br>\
 –Swamp Sparrow<br>")
 
-var mendon_ponds_100_pond_2021 = L.marker([43.02909911577686, -77.56910025788241], {icon: birdIcon}).addTo(map);
-mendon_ponds_100_pond_2021.bindPopup("<a href='https://drive.google.com/drive/folders/1WANamqw3n-U7EnYB65ksySY2sn7whJRA?usp=sharing' target='_blank'>Lucien Morin: 8.4.21</a><br>\
+var mendon_ponds8_100_pond_2021 = L.marker([43.02909911577686, -77.56910025788241], {icon: birdIcon}).addTo(map);
+mendon_ponds8_100_pond_2021.bindPopup("<a href='https://drive.google.com/drive/folders/1WANamqw3n-U7EnYB65ksySY2sn7whJRA?usp=sharing' target='_blank'>Lucien Morin: 8.4.21</a><br>\
 –Cedar Waxwing<br>")
+
+var elisonPark8_2021 = L.marker([43.14535129165958, -77.51533948317578], {icon: birdIcon}).addTo(map);
+elisonPark8_2021.bindPopup("<a href='https://drive.google.com/drive/folders/1Ky-JD2316Q8nunlKwXc-aFA3OtRKk5Tr?usp=sharing' target='_blank'>Elison Park: 8.7.21</a><br>\
+–Eastern Phoebe<br>\
+-House Finch(f)")
+
+var irondequoitBay8_11_2021 = L.marker([43.185557109664664, -77.53392089189444], {icon: birdIcon}).addTo(map);
+irondequoitBay8_11_2021.bindPopup("<a href='https://drive.google.com/drive/folders/1YjVPlUD1PZJURotZ-iH_9CF3aK2p1IGJ?usp=sharing' target='_blank'>Irondequoit Bay: 8.11.21</a><br>\
+–Hairy Woodpecker<br>\
+-Tufted Titmouse")
+
+var parker_river_refuge_2021 = L.marker([42.79253292533912, -70.810950587305], {icon: birdIcon}).addTo(map);
+parker_river_refuge_2021.bindPopup("<a href='https://drive.google.com/drive/folders/1lWGpzuKrZFiLCJif8OZ45S2sCZ0Egrqb?usp=sharing' target='_blank'>Parker River Refuge: 8.15.21</a><br>\
+–Double-Crested Cormorants (swimming)<br>\
+-Killdeer<br>\
+-Tree Swallows")
+
+var queen_st_2021 = L.marker([43.16857740770947, -77.56057591324527], {icon: birdIcon}).addTo(map);
+queen_st_2021.bindPopup("<a href='https://drive.google.com/drive/folders/1lWGpzuKrZFiLCJif8OZ45S2sCZ0Egrqb?usp=sharing' target='_blank'>Queen St.: 8.21.21</a><br>\
+-Northern Flicker")
 
