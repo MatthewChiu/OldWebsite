@@ -131,6 +131,6 @@ parker_river_refuge_2021.bindPopup("<a href='https://drive.google.com/drive/fold
 -Tree Swallows")
 
 var queen_st_2021 = L.marker([43.16857740770947, -77.56057591324527], {icon: birdIcon}).addTo(map);
-queen_st_2021.bindPopup("<a href='https://drive.google.com/drive/folders/1lWGpzuKrZFiLCJif8OZ45S2sCZ0Egrqb?usp=sharing' target='_blank'>Queen St.: 8.21.21</a><br>\
+queen_st_2021.bindPopup("<a href='https://drive.google.com/drive/folders/1-YVQmRDw1KxJ-QD9zt9zuj1_fMHIxTsu?usp=sharing' target='_blank'>Queen St.: 8.21.21</a><br>\
 -Northern Flicker")
 
