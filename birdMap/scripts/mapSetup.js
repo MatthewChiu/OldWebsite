@@ -134,3 +134,16 @@ var queen_st_2021 = L.marker([43.16857740770947, -77.56057591324527], {icon: bir
 queen_st_2021.bindPopup("<a href='https://drive.google.com/drive/folders/1-YVQmRDw1KxJ-QD9zt9zuj1_fMHIxTsu?usp=sharing' target='_blank'>Queen St.: 8.21.21</a><br>\
 -Northern Flicker")
 
+var laSalles_Landing = L.marker([43.17634039267769, -77.52590732890538], {icon: birdIcon}).addTo(map);
+laSalles_Landing.bindPopup("<a href='https://drive.google.com/drive/folders/11odNAgbn1RgIP7vnvU6ElHD6WoBsbIHT?usp=sharing' target='_blank'>LaSalles: 8.29.21</a><br>\
+-Red-tailed Hawk<br>\
+-Kingfisher*")
+
+var hamlin_beach = L.marker([43.36016176206765, -77.95472224681592], {icon: birdIcon}).addTo(map);
+hamlin_beach.bindPopup("<a href='https://drive.google.com/drive/folders/17-r_LmiFYhd5BONoHcDC7sMUxDRocuFv?usp=sharing' target='_blank'>Hamlin Beach: 9.3.21</a><br>\
+-Red-Headed Woodpecker<br>\
+-Black-throated Blue Warbler<br>\
+-Red-eyed Vireo<br>\
+-Hooded Warbler*")
+
+
