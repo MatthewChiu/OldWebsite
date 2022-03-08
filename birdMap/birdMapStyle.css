@@ -78,3 +78,8 @@ ul, li {
     padding-left: 2%;
     padding-right: 2%;
 }
+
+.addButton {
+    text-align: center;
+    padding-bottom: 20;
+}

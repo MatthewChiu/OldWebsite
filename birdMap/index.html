@@ -28,7 +28,7 @@
                 <p id = "lifeListTitle">
                     <u>Life list</u>
                     <div class = "listWrapper">
-                        <ol type="1">
+                        <ol id = "listedBirds" type="1">
                             <li>American Robin</li>
                             <li>European Starling</li>
                             <li>House Sparrow</li>
@@ -125,11 +125,31 @@
                         </ol>
                     </div>
                 </p>
+
             </div>
 
             <div class = "birdColumn2" id = "map">
                 <script src = "./scripts/mapSetup.js"></script>
             </div>
+
+            <input type="text" id="txtVal">
+            <button onclick="addLi()">Add</button>
+
+            <script>
+                function addLi() {
+                    var txtVal = document.getElementById("txtVal").value,
+                        listNode = document.getElementById("listedBirds"),
+                        liNode = document.createElement("LI"),
+                        txtNode = document.createTextNode(txtVal.substr(3));
+                    if (txtVal.startsWith("ADD")) {
+                        console.log("We working");
+                        liNode.appendChild(txtNode);
+                        listNode.appendChild(liNode);
+                        }
+
+                };
+            </script>
+
         </div>
 
         <div id = "additionalPhotos">
