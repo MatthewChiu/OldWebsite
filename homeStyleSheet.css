@@ -1,0 +1,319 @@
+/* Default body */
+body {
+  margin: 0;
+  background-color: #3f3f3f;
+}
+
+html {
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+main {
+  margin-left: 10rem;
+  padding-left: 5px;
+}
+
+a {
+color: white;
+text-decoration: none;
+}
+
+a:hover {
+color: #009879;
+}
+
+/* Skills header */
+.skillsHeaderBox {
+  background-color: #40005d;
+  border-radius: 25px;
+  width: 20rem;
+  margin: auto;
+  color: white;
+  text-align: center;
+  outline: 3pt solid black;
+}
+
+.codingBox {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: rgb(31, 31, 31);
+  margin: 1rem auto;
+  width: 60rem;
+  /* max-width: 95%; */
+  border-radius: 25px;
+  outline: 3pt solid black;
+  box-shadow: 
+  12px 12px 16px 0 rgba(0, 0, 0, 0.15),
+  -8px -8px 12px 0 rgba(255, 255, 255, 0.15),
+  inset 12px 12px 16px 0 rgba(0, 0, 0, 0.15),
+  inset -8px -8px 12px 0 rgba(255, 255, 255, 0.15);
+}
+
+.codingLogos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem;
+  margin: 1rem 3;
+  background-color: #727272;
+  border-radius: 10px;
+}
+
+.codingLogos h3 {
+  color: white;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+
+/* Research header */
+.researchHeaderBox {
+  background-color: #56027c;
+  border-radius: 25px;
+  width: 20rem;
+  margin: auto;
+  color: white;
+  text-align: center;
+  position: relative;
+  top: 2.5rem;
+  outline: 3pt solid black;
+  box-shadow: 
+  12px 12px 16px 0 rgba(0, 0, 0, 0.15),
+  -8px -8px 12px 0 rgba(255, 255, 255, 0.15),
+  inset 12px 12px 16px 0 rgba(0, 0, 0, 0.15),
+  inset -8px -8px 12px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Paper CSS */
+.papers {
+  padding: 1rem;
+  background-color: rgb(31, 31, 31);
+  margin: 1rem auto;
+  width: 60rem;
+  /* max-width: 95%; */
+  border-radius: 25px;
+  outline: 3pt solid black;
+  box-shadow: 
+  12px 12px 16px 0 rgba(0, 0, 0, 0.15),
+  -8px -8px 12px 0 rgba(255, 255, 255, 0.15),
+  inset 12px 12px 16px 0 rgba(0, 0, 0, 0.15),
+  inset -8px -8px 12px 0 rgba(255, 255, 255, 0.15);
+}
+
+.lineItem {
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  padding: 0.5rem;
+  margin: 1rem 0;
+  background-color: #4b4b4b;
+  border-radius: 10px;
+  
+}
+
+.acronymn {
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  width: 8.5rem;
+  height: 5.5rem;
+  border: 1px solid #ececec;
+  background-color: #56027c;
+  color: white;
+  border-radius: 12px;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 
+  12px 12px 16px 0 rgba(0, 0, 0, 0.15),
+  -8px -8px 12px 0 rgba(255, 255, 255, 0.15),
+  inset 12px 12px 16px 0 rgba(0, 0, 0, 0.15),
+  inset -8px -8px 12px 0 rgba(255, 255, 255, 0.15);
+}
+
+.paperItem__year {
+    font-size: .8rem;
+}
+
+.paperItem__conference {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.lineItem h2 {
+  color: #3a3a3a;
+  flex: 1;
+  margin: 0 1rem;
+  color: white;
+  float: left;
+}
+
+.lineItem h3{
+  color: white;
+  /* align-items: center; */
+  margin: 0 3rem;
+}
+
+.conferenceInformation {
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* Nav bar */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 10rem;
+    height: 100%;
+    background: #d1d1d1;
+    border-right: 3px solid #333;
+    box-shadow: 
+    12px 12px 16px 0 rgba(0, 0, 0, 0.25),
+    -8px -8px 12px 0 rgba(255, 255, 255, 0.3);
+}
+
+.navItems {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10rem;
+  padding: 2px;
+}
+
+.myName {
+  font-weight: bold;
+  font-size: xx-large;
+}
+
+.navLink {
+  font-size: large;
+  text-decoration: none;
+  padding: 5px;
+  color: #222c6a;
+  text-transform: uppercase; 
+  letter-spacing: 0.05em
+}
+
+.navLink:hover {
+  color: #009879;
+}
+
+/* About me */
+.profileImage{
+  max-width: 100%;
+  max-height: 100%;
+}
+
+
+.profileImageBox{
+  height: 40rem;
+}
+
+.profileBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  /* background-color: rgb(31, 31, 31); */
+  margin: 1rem auto;
+  width: 60rem;
+
+  box-shadow: 
+  12px 12px 16px 0 rgba(0, 0, 0, 0.15),
+  -8px -8px 12px 0 rgba(255, 255, 255, 0.15),
+  inset 12px 12px 16px 0 rgba(0, 0, 0, 0.15),
+  inset -8px -8px 12px 0 rgba(255, 255, 255, 0.15);
+  border-radius: 25px;
+  outline: 1pt solid black;
+  color: white;
+}
+
+.profileDescription p {
+  font-size: 14pt;
+}
+
+
+
+/*  Teaching experience */
+.teachingExperience{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* background-color: white; */
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.teachingSubject {
+  text-align: center;
+  margin: 1rem;
+  padding: 2rem;
+  align-items: center;
+  background-color: #3f3f3f;
+  color: rgba(255, 255, 255, 0.700);
+  max-width: 40%;
+
+  box-shadow: 
+  12px 12px 16px 0 rgba(0, 0, 0, 0.25),
+  -8px -8px 12px 0 rgba(255, 255, 255, 0.3);
+}
+
+.teachingSubject h2 {
+  font-size: xx-large;
+}
+
+.teachingSubject u {
+  font-size: x-large;
+}
+
+.teachingSubject p {
+  font-size: large;
+}
+
+/* Coding page */
+.codingPage {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+}
+
+.codingPage h1 {
+  color: white;
+}
+
+.codingPage a {
+  color: rgba(255, 255, 255, 0.700);
+}
+
+.codingPage a:hover{
+  color: #009879;
+}
+
+.codingItem {
+  /* margin: 1rem; */
+  padding-left: 2rem;
+  /* align-items: center; */
+  background-color: #3f3f3f;
+  color: rgba(255, 255, 255, 0.700);
+
+  box-shadow: 
+  12px 12px 16px 0 rgba(0, 0, 0, 0.25),
+  -8px -8px 12px 0 rgba(255, 255, 255, 0.4);
+}
+
+.codingItemTitle {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  
+}
+
+.flavorText {
+  margin-left: 2rem;
+  padding-bottom: 2rem;
+  font-style: italic;
+  font-size: large;
+}
