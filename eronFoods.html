@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Can Eron Eat This?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Can Eron Eat This?</h1>
+    <form id="foodForm">
+        <label for="food_item">Enter a food item:</label>
+        <input type="text" id="food_item" name="food_item" required>
+        <button type="submit">Check</button>
+    </form>
+    <h2 id="result"></h2>
+
+    <script>
+        // Sample database of foods Eron can eat
+        const foodDatabase = new Set(["apple", "banana", "carrot", "chicken", "rice"]);
+
+        document.getElementById('foodForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const foodItem = document.getElementById('food_item').value.toLowerCase();
+            const resultElement = document.getElementById('result');
+            if (foodDatabase.has(foodItem)) {
+                resultElement.textContent = "Yes!";
+            } else {
+                resultElement.textContent = "No!";
+            }
+        });
+    </script>
+</body>
+</html>
