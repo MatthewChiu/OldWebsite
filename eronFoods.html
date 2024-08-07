@@ -37,13 +37,13 @@
             const foodItem = document.getElementById('food_item').value.toLowerCase();
             const resultElement = document.getElementById('result');
             if (foodDatabase.has(foodItem)) {
-                resultElement.textContent = "Yes!";
-            } else if (foodItem == "bears") {
+                resultElement.textContent = `${foodItem}: YES!`;
+            } else if (foodItem == "bears" || foodItem == "lions"){
                 resultElement.textContent = "Eek!";
             } else if (foodItem == "snacks") {
                 resultElement.textContent = "depends...";
             } else {
-                resultElement.textContent = "No!";
+                resultElement.textContent = `${foodItem}: No!`;
             }
             
         });
