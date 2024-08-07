@@ -28,7 +28,11 @@
 
     <script>
         // Sample database of foods Eron can eat
-        const foodDatabase = new Set(["apple", "banana", "carrot", "chicken", "rice"]);
+        const foodDatabase = new Set(["fruit", "apple", "banana", "carrot", "pears", "grapes", "strawberries",
+                                      "rice", "tofu",
+                                      //snacks 
+                                      "chips",
+                                     "pasta", "gnocchi"]);
 
         document.getElementById('foodForm').addEventListener('submit', function(event) {
             event.preventDefault();
@@ -36,9 +40,14 @@
             const resultElement = document.getElementById('result');
             if (foodDatabase.has(foodItem)) {
                 resultElement.textContent = "Yes!";
+            } else if (foodItem == "bears") {
+                resultElement.textContent = "Eek!";
+            } else if (foodItem == "snacks") {
+                resultElement.textContent = "depends...";
             } else {
                 resultElement.textContent = "No!";
             }
+            
         });
     </script>
 </body>
