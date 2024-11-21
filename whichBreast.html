@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Persistent Button Toggle</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
+      font-family: Arial, sans-serif;
+    }
+    #toggleButton {
+      width: 200px;
+      height: 100px;
+      font-size: 24px;
+      font-weight: bold;
+      color: white;
+      background-color: green;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+  <button id="toggleButton">Left</button>
+
+  <script>
+    const button = document.getElementById('toggleButton');
+
+    // Load state from localStorage
+    const savedState = localStorage.getItem('buttonState');
+    if (savedState) {
+      const state = JSON.parse(savedState);
+      button.textContent = state.text;
+      button.style.backgroundColor = state.color;
+    }
+
+    // Update state on click
+    button.addEventListener('click', () => {
+      if (button.textContent === 'Left') {
+        button.textContent = 'Right';
+        button.style.backgroundColor = 'orange';
+      } else {
+        button.textContent = 'Left';
+        button.style.backgroundColor = 'green';
+      }
+
+      // Save state to localStorage
+      const newState = {
+        text: button.textContent,
+        color: button.style.backgroundColor
+      };
+      localStorage.setItem('buttonState', JSON.stringify(newState));
+    });
+  </script>
+</body>
+</html>
