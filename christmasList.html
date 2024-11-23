@@ -68,6 +68,9 @@
             color: blue;
             text-decoration: underline;
         }
+        .hidden {
+            visibility: hidden;
+        }
     </style>
 </head>
 <body>
@@ -130,14 +133,22 @@
         };
 
         // Populate table with saved data
-        function populateTable() {
+        function populateTable(selectedName = null) {
             headerRow.querySelectorAll('th').forEach((th, index) => {
                 const ul = tableBody.rows[0].cells[index].querySelector('ul');
                 ul.innerHTML = '';
                 savedData[th.innerText].forEach(gift => {
                     const li = document.createElement('li');
                     li.textContent = gift.name;
-                    if (gift.completed) li.classList.add('strikethrough');
+                    if (gift.completed) {
+                        li.classList.add('strikethrough');
+                        // Hide strikethrough if selected name matches the column header
+                        if (selectedName === th.innerText) {
+                            li.classList.add('hidden');
+                        } else {
+                            li.classList.remove('hidden');
+                        }
+                    }
                     li.addEventListener('click', () => {
                         gift.completed = !gift.completed;
                         li.classList.toggle('strikethrough');
@@ -170,6 +181,10 @@
                 addButtons[index].style.display =
                     th.innerText === name ? 'inline-block' : 'none';
             });
+
+            // Update table to show/hide strikethroughs
+            populateTable(name);
+
             dropdownContent.style.display = 'none';
         });
 
@@ -181,7 +196,7 @@
                 if (gift) {
                     savedData[name].push({ name: gift, completed: false });
                     saveData();
-                    populateTable();
+                    populateTable(name);
                 }
             });
         });
