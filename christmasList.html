@@ -120,55 +120,74 @@
         const selectedNameDisplay = document.getElementById('selectedName');
 
         // Dropdown functionality
+        // Variable to keep track of the selected name
+        let selectedName = '';
+        
         document.querySelector('#nameDropdown button').addEventListener('click', () => {
             const dropdownContent = document.querySelector('#dropdownContent');
-            dropdownContent.style.display =
-                dropdownContent.style.display === 'block' ? 'none' : 'block';
+            dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
         });
-
+        
+        // Dropdown selection event to get selected name
         document.querySelector('#dropdownContent').addEventListener('click', event => {
             const name = event.target.getAttribute('data-name');
             if (!name) return;
-
+        
             selectedNameDisplay.textContent = name;
             document.querySelector('#dropdownContent').style.display = 'none';
-
+        
+            // Update the selected name variable
+            selectedName = name;
+        
             // Highlight the corresponding table column
             highlightColumn(name);
         });
+        
+        // Function to highlight the column for the selected name
+        function highlightColumn(name) {
+            const headers = headerRow.querySelectorAll('th');
+            const cells = tableBody.rows[0].cells;
+        
+            headers.forEach((header, index) => {
+                if (header.innerText === name) {
+                    header.classList.add('highlight');
+                    cells[index].classList.add('highlight');
+                    tableBody.querySelectorAll('.add-btn')[index].style.display = 'inline-block';
+                } else {
+                    header.classList.remove('highlight');
+                    cells[index].classList.remove('highlight');
+                    tableBody.querySelectorAll('.add-btn')[index].style.display = 'none';
+                }
+            });
+        }
 
-        document.addEventListener('click', event => {
-            if (!event.target.closest('#nameDropdown')) {
-                document.querySelector('#dropdownContent').style.display = 'none';
-            }
-        });
-
-        // Just added
+        // Name selection and X
         document.querySelectorAll('.add-btn').forEach((button, index) => {
             button.addEventListener('click', function() {
-                // Prompt the user for the gift name
                 const giftName = prompt("Enter the gift name:");
                 
                 if (giftName) {
-                    // Find the corresponding <ul> where the gift will be added
                     const ul = tableBody.rows[0].cells[index].querySelector('ul');
                     const li = document.createElement('li');
                     li.textContent = giftName;
         
-                    // Create the remove "X" button
                     const removeBtn = document.createElement('span');
                     removeBtn.textContent = " X";
                     removeBtn.style.color = "red"; // Styling the remove button
                     removeBtn.style.cursor = "pointer";
+                    removeBtn.style.marginLeft = "5px"; // Add space between gift name and "X"
+                    
                     removeBtn.addEventListener('click', function(event) {
-                        // Prevent the event from bubbling if clicking X
-                        event.stopPropagation();
-                        removeGiftFromAllLists(li);
+                        // Only allow removal if the selected name matches
+                        if (selectedName === headerRow.cells[index].textContent) {
+                            event.stopPropagation();
+                            removeGiftFromAllLists(li);
+                        } else {
+                            alert("You can only remove gifts for the selected name!");
+                        }
                     });
         
                     li.appendChild(removeBtn); // Append the "X" to the <li>
-        
-                    // Optionally, add a click handler to each <li> for striking through
                     li.addEventListener('click', function() {
                         li.classList.toggle('strikethrough');
                     });
