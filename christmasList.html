@@ -252,6 +252,87 @@
         }
 
         // (Other functionality like Firebase integration and gift addition will go here)
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAlYZZj096JCgxLlUWisMpzbbtIEmInsVA",
+            authDomain: "christmaslist-5302c.firebaseapp.com",
+            databaseURL: "https://christmaslist-5302c-default-rtdb.firebaseio.com",
+            projectId: "christmaslist-5302c",
+            storageBucket: "christmaslist-5302c.firebasestorage.app",
+            messagingSenderId: "351195407103",
+            appId: "1:351195407103:web:b48f792d07f67d03cce2ca",
+            measurementId: "G-L1DYC6807L"
+        };
+
+        // Initialize Firebase
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.11/firebase-app.js';
+        import { getDatabase, ref, set, get, update, remove } from 'https://www.gstatic.com/firebasejs/9.6.11/firebase-database.js';
+
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+
+        const headerRow = document.getElementById('headerRow');
+        const tableBody = document.getElementById('tableBody');
+        const selectedNameDisplay = document.getElementById('selectedName');
+
+        // Save gift data to Firebase
+        async function saveData(name, data) {
+            await set(ref(database, gifts/${name}), data);
+        }
+
+        // Load gift data from Firebase
+        async function loadData() {
+            const snapshot = await get(ref(database, 'gifts'));
+            if (snapshot.exists()) {
+                return snapshot.val();
+            }
+            return {};
+        }
+
+        // Check over this
+        // Populate table with Firebase data
+        async function populateTable(selectedName = null) {
+            const data = await loadData();
+
+            headerRow.querySelectorAll('th').forEach((th, index) => {
+                const ul = tableBody.rows[0].cells[index].querySelector('ul');
+                ul.innerHTML = '';
+                const name = th.innerText;
+                const gifts = data[name] || [];
+
+                gifts.forEach((gift, giftIndex) => {
+                    const li = document.createElement('li');
+                    li.textContent = gift.name;
+
+                    // Add strikethrough if completed and visible to other names
+                    if (gift.completed && selectedName !== name) {
+                        li.classList.add('strikethrough');
+                    }
+
+                    // Add delete button
+                    const deleteBtn = document.createElement('span');
+                    deleteBtn.textContent = 'x';
+                    deleteBtn.className = 'delete-btn';
+                    deleteBtn.addEventListener('click', async () => {
+                        gifts.splice(giftIndex, 1);
+                        await saveData(name, gifts);
+                        populateTable(selectedName);
+                    });
+
+                    li.appendChild(deleteBtn);
+
+                    // Toggle completion on click
+                    li.addEventListener('click', async () => {
+                        if (selectedName === name) return; // No strikethrough for the selected name
+                        gift.completed = !gift.completed;
+                        await saveData(name, gifts);
+                        populateTable(selectedName);
+                    });
+
+                    ul.appendChild(li);
+                });
+            });
+        }
     </script>
 </body>
 </html>
