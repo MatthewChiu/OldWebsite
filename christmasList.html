@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christmas Gift List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        header {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        #nameDropdown {
+            position: relative;
+        }
+        #nameDropdown button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #dropdownContent {
+            display: none;
+            position: absolute;
+            background-color: white;
+            border: 1px solid #ccc;
+            margin-top: 5px;
+            z-index: 1;
+        }
+        #dropdownContent div {
+            padding: 10px;
+            cursor: pointer;
+        }
+        #dropdownContent div:hover {
+            background-color: #f0f0f0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #f9f9f9;
+        }
+        tr.highlight {
+            background-color: #e0f7fa;
+        }
+        li {
+            cursor: pointer;
+        }
+        li:hover {
+            color: red;
+        }
+        li.strikethrough {
+            text-decoration: line-through;
+        }
+        .add-btn {
+            display: none;
+            cursor: pointer;
+            color: blue;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div id="nameDropdown">
+            <button>Names</button>
+            <div id="dropdownContent">
+                <div data-name="Matt">Matt</div>
+                <div data-name="Cedar">Cedar</div>
+                <div data-name="Eron">Eron</div>
+                <div data-name="Adam">Adam</div>
+            </div>
+        </div>
+    </header>
+
+    <table>
+        <thead>
+            <tr id="headerRow">
+                <th>Matt</th>
+                <th>Cedar</th>
+                <th>Eron</th>
+                <th>Adam</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+            <tr>
+                <td>
+                    <ul></ul>
+                    <span class="add-btn">+ Add Gift</span>
+                </td>
+                <td>
+                    <ul></ul>
+                    <span class="add-btn">+ Add Gift</span>
+                </td>
+                <td>
+                    <ul></ul>
+                    <span class="add-btn">+ Add Gift</span>
+                </td>
+                <td>
+                    <ul></ul>
+                    <span class="add-btn">+ Add Gift</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        const dropdownButton = document.querySelector('#nameDropdown button');
+        const dropdownContent = document.querySelector('#dropdownContent');
+        const tableBody = document.getElementById('tableBody');
+        const headerRow = document.getElementById('headerRow');
+        const addButtons = document.querySelectorAll('.add-btn');
+
+        // Load saved data
+        const savedData = JSON.parse(localStorage.getItem('giftData')) || {
+            Matt: [],
+            Cedar: [],
+            Eron: [],
+            Adam: []
+        };
+
+        // Populate table with saved data
+        function populateTable() {
+            headerRow.querySelectorAll('th').forEach((th, index) => {
+                const ul = tableBody.rows[0].cells[index].querySelector('ul');
+                ul.innerHTML = '';
+                savedData[th.innerText].forEach(gift => {
+                    const li = document.createElement('li');
+                    li.textContent = gift.name;
+                    if (gift.completed) li.classList.add('strikethrough');
+                    li.addEventListener('click', () => {
+                        gift.completed = !gift.completed;
+                        li.classList.toggle('strikethrough');
+                        saveData();
+                    });
+                    ul.appendChild(li);
+                });
+            });
+        }
+
+        populateTable();
+
+        // Toggle dropdown
+        dropdownButton.addEventListener('click', () => {
+            dropdownContent.style.display =
+                dropdownContent.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // Handle dropdown click
+        dropdownContent.addEventListener('click', event => {
+            const name = event.target.getAttribute('data-name');
+            if (!name) return;
+
+            // Highlight column
+            headerRow.querySelectorAll('th').forEach((th, index) => {
+                th.classList.toggle(
+                    'highlight',
+                    th.innerText === name
+                );
+                addButtons[index].style.display =
+                    th.innerText === name ? 'inline-block' : 'none';
+            });
+            dropdownContent.style.display = 'none';
+        });
+
+        // Add gift functionality
+        addButtons.forEach((btn, index) => {
+            btn.addEventListener('click', () => {
+                const name = headerRow.cells[index].innerText;
+                const gift = prompt('Enter a new gift:');
+                if (gift) {
+                    savedData[name].push({ name: gift, completed: false });
+                    saveData();
+                    populateTable();
+                }
+            });
+        });
+
+        // Save data
+        function saveData() {
+            localStorage.setItem('giftData', JSON.stringify(savedData));
+        }
+    </script>
+</body>
+</html>
