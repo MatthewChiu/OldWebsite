@@ -153,6 +153,100 @@
         fetchDataFromFirebase();
 
         // Your existing JavaScript logic
+        const dropdownButton = document.querySelector('#nameDropdown button');
+        const dropdownContent = document.querySelector('#dropdownContent');
+        const tableBody = document.getElementById('tableBody');
+        const headerRow = document.getElementById('headerRow');
+        const selectedNameDisplay = document.getElementById('selectedName');
+        const addButtons = document.querySelectorAll('.add-btn');
+
+        // Load saved data
+        const savedData = JSON.parse(localStorage.getItem('giftData')) || {
+            Matt: [],
+            Cedar: [],
+            Eron: [],
+            Adam: []
+        };
+
+        // Populate table with saved data
+        function populateTable(selectedName = null) {
+            headerRow.querySelectorAll('th').forEach((th, index) => {
+                const ul = tableBody.rows[0].cells[index].querySelector('ul');
+                ul.innerHTML = '';
+                savedData[th.innerText].forEach(gift => {
+                    const li = document.createElement('li');
+                    li.textContent = gift.name;
+
+                    // Apply or remove strikethrough based on selected name
+                    if (gift.completed) {
+                        if (selectedName !== th.innerText) {
+                            li.classList.add('strikethrough');
+                        } else {
+                            li.classList.remove('strikethrough');
+                        }
+                    }
+
+                    li.addEventListener('click', () => {
+                        gift.completed = !gift.completed;
+                        li.classList.toggle('strikethrough');
+                        saveData();
+                    });
+                    ul.appendChild(li);
+                });
+            });
+        }
+
+        populateTable();
+
+        // Toggle dropdown
+        dropdownButton.addEventListener('click', () => {
+            dropdownContent.style.display =
+                dropdownContent.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // Handle dropdown click
+        dropdownContent.addEventListener('click', event => {
+            const name = event.target.getAttribute('data-name');
+            if (!name) return;
+
+            // Update selected name display
+            selectedNameDisplay.textContent = name;
+
+            // Highlight column
+            headerRow.querySelectorAll('th').forEach((th, index) => {
+                th.classList.toggle(
+                    'highlight',
+                    th.innerText === name
+                );
+                addButtons[index].style.display =
+                    th.innerText === name ? 'inline-block' : 'none';
+            });
+
+            // Update table to show/hide strikethroughs
+            populateTable(name);
+
+            dropdownContent.style.display = 'none';
+        });
+
+        // Add gift functionality
+        addButtons.forEach((btn, index) => {
+            btn.addEventListener('click', () => {
+                const name = headerRow.cells[index].innerText;
+                const gift = prompt('Enter a new gift:');
+                if (gift) {
+                    savedData[name].push({ name: gift, completed: false });
+                    saveData();
+                    populateTable(name);
+                }
+            });
+        });
+
+        // Save data
+        function saveData() {
+            localStorage.setItem('giftData', JSON.stringify(savedData));
+        }
+
+        
     </script>
 </body>
 </html>
