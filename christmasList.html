@@ -119,7 +119,6 @@
         const tableBody = document.getElementById('tableBody');
         const selectedNameDisplay = document.getElementById('selectedName');
 
-        // Dropdown functionality
         // Variable to keep track of the selected name
         let selectedName = '';
         
@@ -139,7 +138,7 @@
             // Update the selected name variable
             selectedName = name;
         
-            // Highlight the corresponding table column
+            // Highlight the corresponding table column and refresh strikes
             highlightColumn(name);
         });
         
@@ -153,6 +152,12 @@
                     header.classList.add('highlight');
                     cells[index].classList.add('highlight');
                     tableBody.querySelectorAll('.add-btn')[index].style.display = 'inline-block';
+        
+                    // Remove strikethrough from the selected column
+                    const items = cells[index].querySelectorAll('li');
+                    items.forEach(item => {
+                        item.classList.remove('strikethrough');
+                    });
                 } else {
                     header.classList.remove('highlight');
                     cells[index].classList.remove('highlight');
@@ -160,8 +165,7 @@
                 }
             });
         }
-
-        // Name selection and X
+        
         document.querySelectorAll('.add-btn').forEach((button, index) => {
             button.addEventListener('click', function() {
                 const giftName = prompt("Enter the gift name:");
@@ -208,6 +212,19 @@
                 }
             });
         }
+        
+        // Add CSS to manage strikethrough visibility
+        const style = document.createElement('style');
+        style.textContent = `
+        .strikethrough {
+            text-decoration: line-through;
+        }
+        .highlight .strikethrough {
+            text-decoration: none; /* Remove strikethrough on highlighted column */
+        }
+        `;
+        document.head.append(style);
+                
 
         // Highlight the column for the selected name
         function highlightColumn(name) {
