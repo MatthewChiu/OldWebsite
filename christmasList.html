@@ -150,12 +150,25 @@
                 const giftName = prompt("Enter the gift name:");
                 
                 if (giftName) {
-                    // Find the corresponding <ul> to append the gift to
+                    // Find the corresponding <ul> where the gift will be added
                     const ul = tableBody.rows[0].cells[index].querySelector('ul');
                     const li = document.createElement('li');
                     li.textContent = giftName;
         
-                    // Optionally, add a click handler to each <li> for further functionality
+                    // Create the remove "X" button
+                    const removeBtn = document.createElement('span');
+                    removeBtn.textContent = " X";
+                    removeBtn.style.color = "red"; // Styling the remove button
+                    removeBtn.style.cursor = "pointer";
+                    removeBtn.addEventListener('click', function(event) {
+                        // Prevent the event from bubbling if clicking X
+                        event.stopPropagation();
+                        removeGiftFromAllLists(li);
+                    });
+        
+                    li.appendChild(removeBtn); // Append the "X" to the <li>
+        
+                    // Optionally, add a click handler to each <li> for striking through
                     li.addEventListener('click', function() {
                         li.classList.toggle('strikethrough');
                     });
@@ -165,8 +178,17 @@
                 }
             });
         });
-
         
+        // Function to remove gift from all lists
+        function removeGiftFromAllLists(giftItem) {
+            const listItems = document.querySelectorAll('ul li');
+        
+            listItems.forEach(item => {
+                if (item.firstChild.textContent.trim() === giftItem.firstChild.textContent.trim()) {
+                    item.remove(); // Remove the matched item
+                }
+            });
+        }
 
         // Highlight the column for the selected name
         function highlightColumn(name) {
