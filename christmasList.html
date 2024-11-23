@@ -68,9 +68,6 @@
             color: blue;
             text-decoration: underline;
         }
-        .hidden {
-            visibility: hidden;
-        }
     </style>
 </head>
 <body>
@@ -140,15 +137,16 @@
                 savedData[th.innerText].forEach(gift => {
                     const li = document.createElement('li');
                     li.textContent = gift.name;
+
+                    // Apply or remove strikethrough based on selected name
                     if (gift.completed) {
-                        li.classList.add('strikethrough');
-                        // Hide strikethrough if selected name matches the column header
-                        if (selectedName === th.innerText) {
-                            li.classList.add('hidden');
+                        if (selectedName !== th.innerText) {
+                            li.classList.add('strikethrough');
                         } else {
-                            li.classList.remove('hidden');
+                            li.classList.remove('strikethrough');
                         }
                     }
+
                     li.addEventListener('click', () => {
                         gift.completed = !gift.completed;
                         li.classList.toggle('strikethrough');
