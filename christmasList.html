@@ -91,7 +91,7 @@
         </div>
     </header>
 
-    <table>
+    <table id="giftTable">
         <thead>
             <tr id="headerRow">
                 <th>Matt</th>
@@ -122,6 +122,10 @@
         // Variable to keep track of the selected name
         let selectedName = '';
         
+        // Make the table invisible initially
+        const table = document.getElementById('giftTable'); // Assume your table has this ID
+        table.style.display = 'none'; // Hide the table on load
+        
         document.querySelector('#nameDropdown button').addEventListener('click', () => {
             const dropdownContent = document.querySelector('#dropdownContent');
             dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
@@ -140,6 +144,9 @@
         
             // Highlight the corresponding table column and refresh strikes
             highlightColumn(name);
+        
+            // Make the table visible
+            table.style.display = 'table'; // Show the table
         });
         
         // Function to highlight the column for the selected name
@@ -224,7 +231,7 @@
         }
         `;
         document.head.append(style);
-                
+
 
         // Highlight the column for the selected name
         function highlightColumn(name) {
