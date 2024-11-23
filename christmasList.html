@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Christmas Gift List</title>
+    <title>Gift List with Firebase</title>
+    <script src="https://www.gstatic.com/firebasejs/9.6.11/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.11/firebase-database.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -56,9 +58,6 @@
         th {
             background-color: #f9f9f9;
         }
-        tr.highlight {
-            background-color: #e0f7fa;
-        }
         li {
             cursor: pointer;
         }
@@ -69,7 +68,6 @@
             text-decoration: line-through;
         }
         .add-btn {
-            display: none;
             cursor: pointer;
             color: blue;
             text-decoration: underline;
@@ -82,10 +80,13 @@
         <div id="nameDropdown">
             <button>Names</button>
             <div id="dropdownContent">
+                <!-- These names must match table headers -->
                 <div data-name="Matt">Matt</div>
                 <div data-name="Cedar">Cedar</div>
                 <div data-name="Eron">Eron</div>
                 <div data-name="Adam">Adam</div>
+                <div data-name="Alex">Alex</div>
+                <div data-name="James">James</div>
             </div>
         </div>
     </header>
@@ -97,6 +98,8 @@
                 <th>Cedar</th>
                 <th>Eron</th>
                 <th>Adam</th>
+                <th>Alex</th>
+                <th>James</th>
             </tr>
         </thead>
         <tbody id="tableBody">
@@ -105,148 +108,85 @@
                 <td><ul></ul><span class="add-btn">+ Add Gift</span></td>
                 <td><ul></ul><span class="add-btn">+ Add Gift</span></td>
                 <td><ul></ul><span class="add-btn">+ Add Gift</span></td>
+                <td><ul></ul><span class="add-btn">+ Add Gift</span></td>
+                <td><ul></ul><span class="add-btn">+ Add Gift</span></td>
             </tr>
         </tbody>
     </table>
 
-    <!-- Add Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js"></script>
-
     <script>
-        // Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyAlYZZj096JCgxLlUWisMpzbbtIEmInsVA",
-            authDomain: "christmaslist-5302c.firebaseapp.com",
-            databaseURL: "https://christmaslist-5302c-default-rtdb.firebaseio.com",
-            projectId: "christmaslist-5302c",
-            storageBucket: "christmaslist-5302c.firebasestorage.app",
-            messagingSenderId: "351195407103",
-            appId: "1:351195407103:web:b48f792d07f67d03cce2ca",
-            measurementId: "G-L1DYC6807L"
-        };
-
-        // Initialize Firebase
-        const app = firebase.initializeApp(firebaseConfig);
-        const database = firebase.database();
-
-        let savedData = { Matt: [], Cedar: [], Eron: [], Adam: [] };
-
-        function saveDataToFirebase() {
-            firebase.database().ref('giftData').set(savedData)
-                .then(() => console.log('Data saved successfully'))
-                .catch(err => console.error('Error saving data:', err));
-        }
-
-        function fetchDataFromFirebase() {
-            firebase.database().ref('giftData').get()
-                .then(snapshot => {
-                    if (snapshot.exists()) {
-                        savedData = snapshot.val();
-                        populateTable();
-                    }
-                })
-                .catch(err => console.error('Error fetching data:', err));
-        }
-
-        // Call fetchDataFromFirebase on page load
-        fetchDataFromFirebase();
-
-        // Your existing JavaScript logic
-        const dropdownButton = document.querySelector('#nameDropdown button');
-        const dropdownContent = document.querySelector('#dropdownContent');
-        const tableBody = document.getElementById('tableBody');
         const headerRow = document.getElementById('headerRow');
+        const tableBody = document.getElementById('tableBody');
         const selectedNameDisplay = document.getElementById('selectedName');
-        const addButtons = document.querySelectorAll('.add-btn');
 
-        // Load saved data
-        const savedData = JSON.parse(localStorage.getItem('giftData')) || {
-            Matt: [],
-            Cedar: [],
-            Eron: [],
-            Adam: []
-        };
-
-        // Populate table with saved data
-        function populateTable(selectedName = null) {
-            headerRow.querySelectorAll('th').forEach((th, index) => {
-                const ul = tableBody.rows[0].cells[index].querySelector('ul');
-                ul.innerHTML = '';
-                savedData[th.innerText].forEach(gift => {
-                    const li = document.createElement('li');
-                    li.textContent = gift.name;
-
-                    // Apply or remove strikethrough based on selected name
-                    if (gift.completed) {
-                        if (selectedName !== th.innerText) {
-                            li.classList.add('strikethrough');
-                        } else {
-                            li.classList.remove('strikethrough');
-                        }
-                    }
-
-                    li.addEventListener('click', () => {
-                        gift.completed = !gift.completed;
-                        li.classList.toggle('strikethrough');
-                        saveData();
-                    });
-                    ul.appendChild(li);
-                });
-            });
-        }
-
-        populateTable();
-
-        // Toggle dropdown
-        dropdownButton.addEventListener('click', () => {
+        // Dropdown functionality
+        document.querySelector('#nameDropdown button').addEventListener('click', () => {
+            const dropdownContent = document.querySelector('#dropdownContent');
             dropdownContent.style.display =
                 dropdownContent.style.display === 'block' ? 'none' : 'block';
         });
 
-        // Handle dropdown click
-        dropdownContent.addEventListener('click', event => {
+        document.querySelector('#dropdownContent').addEventListener('click', event => {
             const name = event.target.getAttribute('data-name');
             if (!name) return;
 
-            // Update selected name display
             selectedNameDisplay.textContent = name;
+            document.querySelector('#dropdownContent').style.display = 'none';
 
-            // Highlight column
-            headerRow.querySelectorAll('th').forEach((th, index) => {
-                th.classList.toggle(
-                    'highlight',
-                    th.innerText === name
-                );
-                addButtons[index].style.display =
-                    th.innerText === name ? 'inline-block' : 'none';
-            });
-
-            // Update table to show/hide strikethroughs
-            populateTable(name);
-
-            dropdownContent.style.display = 'none';
+            // Highlight the corresponding table column
+            highlightColumn(name);
         });
 
-        // Add gift functionality
-        addButtons.forEach((btn, index) => {
-            btn.addEventListener('click', () => {
-                const name = headerRow.cells[index].innerText;
-                const gift = prompt('Enter a new gift:');
-                if (gift) {
-                    savedData[name].push({ name: gift, completed: false });
-                    saveData();
-                    populateTable(name);
+        document.addEventListener('click', event => {
+            if (!event.target.closest('#nameDropdown')) {
+                document.querySelector('#dropdownContent').style.display = 'none';
+            }
+        });
+
+        // Just added
+        document.querySelectorAll('.add-btn').forEach((button, index) => {
+            button.addEventListener('click', function() {
+                // Prompt the user for the gift name
+                const giftName = prompt("Enter the gift name:");
+                
+                if (giftName) {
+                    // Find the corresponding <ul> to append the gift to
+                    const ul = tableBody.rows[0].cells[index].querySelector('ul');
+                    const li = document.createElement('li');
+                    li.textContent = giftName;
+        
+                    // Optionally, add a click handler to each <li> for further functionality
+                    li.addEventListener('click', function() {
+                        li.classList.toggle('strikethrough');
+                    });
+        
+                    // Append the new gift to the <ul>
+                    ul.appendChild(li);
                 }
             });
         });
 
-        // Save data
-        function saveData() {
-            localStorage.setItem('giftData', JSON.stringify(savedData));
+        
+
+        // Highlight the column for the selected name
+        function highlightColumn(name) {
+            const headers = headerRow.querySelectorAll('th');
+            const cells = tableBody.rows[0].cells;
+
+            headers.forEach((header, index) => {
+                if (header.innerText === name) {
+                    headers[index].classList.add('highlight');
+                    cells[index].classList.add('highlight');
+                    tableBody.querySelectorAll('.add-btn')[index].style.display = 'inline-block';
+                } else {
+                    headers[index].classList.remove('highlight');
+                    cells[index].classList.remove('highlight');
+                    tableBody.querySelectorAll('.add-btn')[index].style.display = 'none';
+                }
+            });
         }
 
-        
+        // (Other functionality like Firebase integration and gift addition will go here)
     </script>
 </body>
 </html>
